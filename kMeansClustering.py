@@ -9,7 +9,7 @@ import requests
 print("Retrieving data from NIST")
 
 #retrieve the data from the web page
-page = requests.get('http://www.nist.gov/allnews.cfm?s=01-01-2014&e=12-31-2014') 
+page = requests.get('http://www.nist.gov/allnews.cfm?s=01-01-2014&e=12-31-2014')
 #use html module to parse it out and store in tree
 tree = html.fromstring(page.content)
 
@@ -36,8 +36,8 @@ print("Extracting features from the training dataset using a sparse vectorizer")
 t0 = time()
 #create a sparse word occurrence frequency matrix of the most frequent words
 vectorizer = TfidfVectorizer(input=news, max_df=0.5, min_df=2, stop_words='english')
-# this calculates the counts 
-X = vectorizer.fit_transform(news) 
+# this calculates the counts
+X = vectorizer.fit_transform(news)
 #if you want to look at the feature names, uncomment:
 #print("feature names:")
 #print(vectorizer.get_feature_names())
@@ -67,7 +67,7 @@ order_centroids = km.cluster_centers_.argsort()[:, ::-1]
 
 terms = vectorizer.get_feature_names()
 for i in range(k):
-    print("Cluster %d:" % i, end='')
+    print("Cluster %d:" % (i+1), end='')
     for ind in order_centroids[i, :10]:
         print(' %s' % terms[ind], end='')
     print()
